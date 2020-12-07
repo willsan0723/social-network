@@ -5,7 +5,7 @@ const Reaction = require("./Reaction")
 const thoughtSchema = new Schema({
     thoughtText: {
         type: String,
-        required: true,
+        required: "Please provide text for your post!",
         minlength: 1,
         maxlength: 280
     },
@@ -16,7 +16,7 @@ const thoughtSchema = new Schema({
     },
     username: {
         type: String,
-        required: true
+        required: "Please provide a username for this post!"
     },
     reaction: [Reaction]
 },
@@ -33,6 +33,6 @@ thoughtSchema.virtual('reactionCount').get(function () {
     return this.reaction.length
 });
 
-const Thought = model("Thought", thoughtSchema);
+const Thought = model('Thought', thoughtSchema);
 
 module.exports = Thought;

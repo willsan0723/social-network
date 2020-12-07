@@ -52,7 +52,7 @@ const userController = {
     },
     addFriend(req, res) {
         User.findOneAndUpdate(
-            { id: req.params.id },
+            { _id: req.params.userId },
             { $push: { friends: req.body } },
             { new: true, runValidators: true }
         )
@@ -66,7 +66,7 @@ const userController = {
     },
     deleteFriend(req, res) {
         User.findOneAndUpdate(
-            { id: req.params.id },
+            { _id: req.params.id },
             { $pull: { friends: req.body } },
             { new: true }
         )
